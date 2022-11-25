@@ -32,7 +32,7 @@ namespace api.Controllers
             return jogos.Count != 0 ? Ok(jogos) : NotFound();
         }
 
-        [HttpPatch]
+        [HttpPost]
         [Route("palpitar")]
         public IActionResult Palpitar([FromBody] Jogo jogo)
         {
