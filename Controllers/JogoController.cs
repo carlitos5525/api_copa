@@ -45,7 +45,8 @@ namespace api.Controllers
         [Route("buscar/{id}")]
         public IActionResult Buscar([FromRoute] int id)
         {
-            var jogo_encontrado = _context.Jogos.Find(id);
+            var jogo_encontrado = _context.Jogos.Include(s => s.SelecaoA).Include(s => s.SelecaoB)
+            .FirstOrDefault(f => f.Id == id);
             return Ok(jogo_encontrado);
 
         }
